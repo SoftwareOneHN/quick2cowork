@@ -50,21 +50,38 @@ Bộ Agent Skills cho Claude Code / Claude Cowork, theo chuẩn [agentskills.io]
 
 ## Cài đặt
 
-### Cách 1: Project-level (khuyến nghị)
+### Cách 1: npx (nhanh nhất — khuyến nghị)
+
+Dùng [Skills CLI](https://github.com/vercel-labs/skills) để cài từ GitHub:
 
 ```bash
+# Cài TẤT CẢ skills
+npx skills add SoftwareOneHN/quick2cowork
+
+# Cài 1 skill cụ thể
+npx skills add SoftwareOneHN/quick2cowork --skill document-conversion
+npx skills add SoftwareOneHN/quick2cowork --skill highcharts
+npx skills add SoftwareOneHN/quick2cowork --skill parallel-orchestration
+```
+
+Skills CLI tự detect agent đang dùng (Claude Code, Cursor, Copilot, Codex...) và cài đúng chỗ.
+
+### Cách 2: Project-level (manual)
+
+```bash
+git clone https://github.com/SoftwareOneHN/quick2cowork.git
 cp -r quick2cowork/ /path/to/your-project/.claude/skills/
 ```
 
 Claude tự động phát hiện và load skills từ `.claude/skills/`.
 
-### Cách 2: Personal-level (mọi project)
+### Cách 3: Personal-level (mọi project)
 
 ```bash
 cp -r quick2cowork/ ~/.claude/skills/
 ```
 
-### Cách 3: Chọn skill cụ thể
+### Cách 4: Chọn skill cụ thể
 
 ```bash
 # Chỉ lấy những gì cần
