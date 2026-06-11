@@ -50,9 +50,22 @@ Bộ Agent Skills cho Claude Code / Claude Cowork, theo chuẩn [agentskills.io]
 
 ## Cài đặt
 
-### Cách 1: npx (nhanh nhất — khuyến nghị)
+### Cách 1: One-liner (tự detect Claude Desktop / Kiro / Claude Code)
 
-Dùng [Skills CLI](https://github.com/vercel-labs/skills) để cài từ GitHub:
+```bash
+curl -sL https://raw.githubusercontent.com/SoftwareOneHN/quick2cowork/main/install.sh | bash
+```
+
+Hoặc clone rồi chạy:
+
+```bash
+git clone https://github.com/SoftwareOneHN/quick2cowork.git
+cd quick2cowork && ./install.sh
+```
+
+Script tự detect agent nào đã cài trên máy và hỏi bạn muốn install vào đâu.
+
+### Cách 2: npx (Skills CLI)
 
 ```bash
 # Cài TẤT CẢ skills
@@ -64,30 +77,19 @@ npx skills add SoftwareOneHN/quick2cowork --skill highcharts
 npx skills add SoftwareOneHN/quick2cowork --skill parallel-orchestration
 ```
 
-Skills CLI tự detect agent đang dùng (Claude Code, Cursor, Copilot, Codex...) và cài đúng chỗ.
-
-### Cách 2: Project-level (manual)
+### Cách 3: Manual
 
 ```bash
 git clone https://github.com/SoftwareOneHN/quick2cowork.git
-cp -r quick2cowork/ /path/to/your-project/.claude/skills/
 ```
 
-Claude tự động phát hiện và load skills từ `.claude/skills/`.
-
-### Cách 3: Personal-level (mọi project)
-
-```bash
-cp -r quick2cowork/ ~/.claude/skills/
-```
-
-### Cách 4: Chọn skill cụ thể
-
-```bash
-# Chỉ lấy những gì cần
-cp -r quick2cowork/document-conversion/ ~/.claude/skills/
-cp -r quick2cowork/highcharts/ ~/.claude/skills/
-```
+| Target | Copy vào |
+|--------|----------|
+| Claude Desktop (macOS) | `~/Library/Application Support/Claude-3p/local-agent-mode-sessions/skills-plugin/.../skills/` |
+| Kiro (global) | `~/.kiro/skills/` |
+| Kiro (workspace) | `.kiro/skills/` |
+| Claude Code (global) | `~/.claude/skills/` |
+| Claude Code (project) | `.claude/skills/` |
 
 ---
 
